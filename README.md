@@ -1,10 +1,10 @@
 # eruler
 Erlang based rule engine.
 
-Takes in an object and a rule set,
-Applies rule set on object,
-If rule set evaluates to true - return true result,
-If rule set evuluates to false - return false result.
+1. Takes in an object and a rule set,
+2. Applies rule set on object,
+3. If rule set evaluates to true - return true result,
+4. If rule set evuluates to false - return false result.
 
 Example:
 ```
@@ -24,7 +24,7 @@ RuleSet = {
   ],
   result_true,
   result_false
-}
+},
 
 eruler:apply(Object, RuleSet).
 ```
