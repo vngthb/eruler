@@ -1,6 +1,11 @@
 # eruler
 Erlang based rule engine.
 
+Takes in an object and a rule set,
+Applies rule set on object,
+If rule set evaluates to true - return true result,
+If rule set evuluates to false - return false result.
+
 Example:
 ```
 Object = #{
@@ -11,7 +16,7 @@ Object = #{
   }
 },
 
-Rule = {
+RuleSet = {
   [
     {eq, attribute_1, value_1},
     {neq, attribute_2, value_2},
@@ -21,5 +26,5 @@ Rule = {
   result_false
 }
 
-eruler:apply(Object, Rule).
+eruler:apply(Object, RuleSet).
 ```
