@@ -2,7 +2,7 @@
 
 -include_lib("eunit/include/eunit.hrl").
 
-%%% when an empty list of conditions is applied
+%%% when a ruleset with no conditions is applied
 %%% then the outcome evaluates to true
 apply_1_test() ->
     Struct = struct(),
@@ -10,6 +10,9 @@ apply_1_test() ->
     Outcome = eruler:apply(Rule, Struct),
     ?assert(Outcome).
 
+%%% when a ruleset with conditions is applied
+%%% and all of them evaluate to true
+%%% then true is returned
 apply_2_test() ->
     Struct = struct(),
     Rule = [
@@ -19,6 +22,9 @@ apply_2_test() ->
     Outcome = eruler:apply(Rule, Struct),
     ?assert(Outcome).
 
+%%% when a ruleset with conditions is applied
+%%% and not all of them evaluate to true
+%%% then false is returned
 apply_3_test() ->
     Struct = struct(),
     Rule = [
@@ -28,6 +34,9 @@ apply_3_test() ->
     Outcome = eruler:apply(Rule, Struct),
     ?assert(not Outcome).
 
+%%% when a ruleset with conditions and positive outcome is applied
+%%% and all of the conditions evaluate to true
+%%% then the positive outcome value is returned
 apply_4_test() ->
     Struct = struct(),
     Rule = {
@@ -40,6 +49,9 @@ apply_4_test() ->
     Outcome = eruler:apply(Rule, Struct),
     ?assertEqual(allow, Outcome).
 
+%%% when a ruleset with conditions and positive outcome is applied
+%%% and not all of the conditions evaluate to true
+%%% then false is returned
 apply_5_test() ->
     Struct = struct(),
     Rule = {
@@ -47,11 +59,14 @@ apply_5_test() ->
             {eq, key_1, value_2},
             {eq, [key_3, key_4], value_4}
         ],
-        hello
+        allow
     },
     Outcome = eruler:apply(Rule, Struct),
     ?assertEqual(false, Outcome).
 
+%%% when a ruleset with conditions and positive and negative outcome is applied
+%%% and all of the conditions evaluate to true
+%%% then the positive outcome value is returned
 apply_6_test() ->
     Struct = struct(),
     Rule = {
@@ -65,6 +80,9 @@ apply_6_test() ->
     Outcome = eruler:apply(Rule, Struct),
     ?assertEqual(allow, Outcome).
 
+%%% when a ruleset with conditions and positive and negative outcome is applied
+%%% and not all of the conditions evaluate to true
+%%% then the negative outcome value is returned
 apply_7_test() ->
     Struct = struct(),
     Rule = {
