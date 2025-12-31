@@ -1,5 +1,5 @@
 # eruler
-Erlang based rule engine.
+Erlang map-based rule engine.
 
 1. Takes in an object and a rule set,
 2. Applies rule set on object,
