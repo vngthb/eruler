@@ -37,11 +37,7 @@ apply({Conditions, Outcome0, Outcome1}, Struct) ->
         Result == false -> Outcome1
     end;
 apply(Conditions, Struct) when is_list(Conditions) ->
-    Result = apply0(Conditions, Struct),
-    if
-        Result == true -> true;
-        Result == false -> false
-    end.
+    apply0(Conditions, Struct).
 
 apply0([{Op, Key, Value0} | Conditions], Struct) ->
     Value1 = get(Key, Struct),
