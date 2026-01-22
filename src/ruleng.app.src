@@ -1,4 +1,4 @@
-{application, eruler, [
+{application, ruleng, [
     {description, "An Erlang map-based rule engine."},
     {vsn, "0.1.0"},
     {registered, []},

@@ -1,4 +1,4 @@
--module(eruler_test).
+-module(ruleng_test).
 
 -include_lib("eunit/include/eunit.hrl").
 
@@ -7,7 +7,7 @@
 apply_1_test() ->
     Struct = struct(),
     Rule = [],
-    Outcome = eruler:apply(Rule, Struct),
+    Outcome = ruleng:apply(Rule, Struct),
     ?assert(Outcome).
 
 %%% when a ruleset with conditions is applied
@@ -19,7 +19,7 @@ apply_2_test() ->
         {eq, key_1, value_1},
         {eq, [key_3, key_4], value_4}
     ],
-    Outcome = eruler:apply(Rule, Struct),
+    Outcome = ruleng:apply(Rule, Struct),
     ?assert(Outcome).
 
 %%% when a ruleset with conditions is applied
@@ -31,7 +31,7 @@ apply_3_test() ->
         {eq, key_1, value_2},
         {eq, [key_3, key_4], value_4}
     ],
-    Outcome = eruler:apply(Rule, Struct),
+    Outcome = ruleng:apply(Rule, Struct),
     ?assert(not Outcome).
 
 %%% when a ruleset with conditions and positive outcome is applied
@@ -46,7 +46,7 @@ apply_4_test() ->
         ],
         allow
     },
-    Outcome = eruler:apply(Rule, Struct),
+    Outcome = ruleng:apply(Rule, Struct),
     ?assertEqual(allow, Outcome).
 
 %%% when a ruleset with conditions and positive outcome is applied
@@ -61,7 +61,7 @@ apply_5_test() ->
         ],
         allow
     },
-    Outcome = eruler:apply(Rule, Struct),
+    Outcome = ruleng:apply(Rule, Struct),
     ?assertEqual(false, Outcome).
 
 %%% when a ruleset with conditions and positive and negative outcome is applied
@@ -77,7 +77,7 @@ apply_6_test() ->
         allow,
         deny
     },
-    Outcome = eruler:apply(Rule, Struct),
+    Outcome = ruleng:apply(Rule, Struct),
     ?assertEqual(allow, Outcome).
 
 %%% when a ruleset with conditions and positive and negative outcome is applied
@@ -93,7 +93,7 @@ apply_7_test() ->
         allow,
         deny
     },
-    Outcome = eruler:apply(Rule, Struct),
+    Outcome = ruleng:apply(Rule, Struct),
     ?assertEqual(deny, Outcome).
 
 struct() ->

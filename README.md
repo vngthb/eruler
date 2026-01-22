@@ -1,4 +1,4 @@
-# eruler
+# ruleng
 Erlang map-based rule engine.
 
 1. Takes in an object and a rule set,
@@ -26,5 +26,5 @@ RuleSet = {
   result_false
 },
 
-eruler:apply(Object, RuleSet).
+ruleng:apply(Object, RuleSet).
 ```

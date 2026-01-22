@@ -1,4 +1,4 @@
--module(eruler).
+-module(ruleng).
 
 -export([
     apply/2
